@@ -1,12 +1,12 @@
-import functions
 import validation_functions
 import add_employee
 import sys
+import csv
 
 def print_line():
     print(75 * "-")
 
-# Display menu options
+# Display menu selection options and prompt user for input until valid option is selected
 def display_options(options:dict):
     print("\nWelcome to the employee database. Please select from the following options:")
     print_line()
@@ -14,14 +14,13 @@ def display_options(options:dict):
         print("{}: {}".format(option, description))
     print_line()
 
-# Display selection options and prompt user for input until valid option is selected
 menu_options = {1: "Add new employee record to database",
                 2: "Remove existing employee record from database",
                 3: "Modify existing employee record",
                 4: "View all employee records",
                 5: "View a filtered list of employee records based on selection criteria"}
 
-functions.display_options(menu_options)
+display_options(menu_options)
 user_input = 0
 choice = None
 while choice is None:
@@ -39,7 +38,8 @@ while choice is None:
 
 # Add new employee record to database
 if choice == 1:
-    print(f"\nYou have selected option 1: {menu_options[1]}. \nPlease enter the new employee's:")
+    # Prompt user to input employee details
+    print(f"You have selected option 1: {menu_options[1]}. \nPlease enter the new employee's:\n")
     firstname = add_employee.get_firstname()
     lastname = add_employee.get_lastname()
     id = add_employee.get_id()
@@ -47,7 +47,22 @@ if choice == 1:
     email = add_employee.get_email()
     title = add_employee.get_title()
     remuneration = add_employee.get_remuneration()
-    # employment_status = input("Employment status: ")
+    employment = add_employee.get_employment()
 
-    # new_employee = [firstname, lastname, id, mobile, email, title, remuneration, employment_status]
+    # Create list with new employee's details
+    new_employee = [firstname, lastname, id, mobile, email, title, remuneration, employment]
 
+    # Prompt user for confirmation
+    print("Please confirm the following details are correct: Y/N")
+    print(*new_employee, sep=", ")
+    while True:
+        confirmation = input()
+        if validation_functions.yesno_validation(confirmation):
+            break
+        else:
+            print("Invalid input, please enter Y or N.")
+
+    # Write new employee's details to employee database file
+    with open('employee_database.csv', 'w') as f:
+        writer = csv.writer(f)
+        writer.writerow(new_employee)

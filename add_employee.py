@@ -1,5 +1,4 @@
 import validation_functions
-from titles import titles
 
 def get_firstname():
     while True:
@@ -52,8 +51,10 @@ def get_title():
         if validation_functions.title_validation(title):
             break
         else:
-            print("Invalid title, please enter a valid role. Valid roles:")
-            print(*titles, sep = ", ")
+            print("Invalid title, please enter a valid role from the following:")
+            with open('titles.txt') as f:
+                data = f.read()
+                print(data.replace('\n', ', '))
     return title
 
 def get_remuneration():
@@ -68,4 +69,15 @@ def get_remuneration():
         except:
             print("Invalid input, please enter a remuneration amount that is a positive integer.")
     return remuneration
-    
+
+def get_employment():
+    while True:
+            employment = input("Employment status: ")
+            if validation_functions.employment_validation(employment):
+                break
+            else:
+                print("Invalid employment status, please enter a valid employment status from the following:")
+                with open('employment.txt') as f:
+                    data = f.read()
+                    print(data.replace('\n', ', '))
+    return employment

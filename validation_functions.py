@@ -1,5 +1,4 @@
 import re
-from titles import titles
 
 def invalid_selection_msg():
     print("Invalid selection, please select from displayed options.")
@@ -17,7 +16,17 @@ def email_validation(input):
     return True if re.match(r"[^@]+@[^@]+\.[^@]+", input) else False
 
 def title_validation(input):
-    return True if input in titles else False
+    with open('titles.txt') as f:
+        data = f.read()
+        return True if input in data else False
 
 def remuneration_validation(input):
     return True if input > 0 else False
+
+def employment_validation(input):
+    with open('employment.txt') as f:
+        data = f.read()
+        return True if input in data else False
+    
+def yesno_validation(input):
+    return True if input == 'Y' or 'N' else False

@@ -1,7 +1,11 @@
 import re
 
+# Functions for user input validation
 def selection_invalid_msg():
     print("Invalid selection, select from displayed options.")
+
+def field_invalid_msg():
+    print("Invalid input, please enter valid field.")
 
 def name_validation(input):
     return input.isalpha()
@@ -31,15 +35,22 @@ def remuneration_validation(input):
     return True if input > 0 else False
 
 def employment_validation(input):
+    employment_list = list()
     with open("employment.txt") as f:
-        employment_list = list()
-        with open("employment.txt") as f:
-            for line in f:
-                employment_list.append(line.strip("\n"))
+        for line in f:
+            employment_list.append(line.strip("\n"))
     return True if input in employment_list else False
     
 def yn_validation(input):
     return True if input == 'Y' or 'N' else False
 
-def yn_invalid_msg():
-    print("Invalid input, please enter Y or N.")
+def confirmation_validation(prompt:str):
+    while True:
+        confirmation = input(prompt)
+        if yn_validation(confirmation):
+            if confirmation == "Y":
+                break
+            print("No changes made.")
+            exit()
+        else:
+            print("Invalid input, please enter Y or N.")

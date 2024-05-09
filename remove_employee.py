@@ -26,8 +26,8 @@ def modify_record(id, updated_field_index, updated_value):
         writer = csv.writer(writefile)
         writer.writerows(lines)
 
-
-
-# with open("employee_database.csv", "r") as readfile:
-#         reader = csv.reader(readfile)
-#         print(list(reader))
+def print_all_records():
+    with open("employee_database.csv") as f:
+        reader = csv.reader(f)
+        for row in reader:
+            print("{:<15} {:15} {:<10} {:<15} {:<30} {:<35} {:<15} {:<15}".format(*row))

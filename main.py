@@ -22,6 +22,7 @@ menu_options = {1: "Add new employee record to database",
                 5: "View a filtered list of employee records based on selection criteria"}
 
 display_options(menu_options)
+
 user_input = None
 choice = None
 while choice is None:
@@ -76,7 +77,7 @@ if choice == 1:
 # Menu option 2: Remove existing employee record from database
 if choice == 2:
     # Prompt user to input ID of employee whose records will be removed
-    id = general_functions.get_existing_id("Enter employee ID of employee whose record will be removed: ")
+    id = validation_functions.get_existing_id("Enter employee ID of employee whose record will be removed: ")
     print("")
 
     # Search database for employee ID, display existing records and prompt user for confirmation
@@ -91,7 +92,7 @@ if choice == 2:
 # Menu option 3: Modify existing employee record
 if choice == 3:
     # Prompt user to input ID of employee whose records will be removed
-    id = general_functions.get_existing_id("Enter employee ID of employee whose record will be updated: ")
+    id = validation_functions.get_existing_id("Enter employee ID of employee whose record will be updated: ")
     print("")
 
     # Search database for employee ID, display existing records
@@ -146,3 +147,7 @@ if choice == 3:
     # Modify employee record in database
     remove_employee.modify_record(id, updated_field_index, updated_value)
     print("Employee record sucessfully modified in database.")
+
+# Menu option 4: View all employee records
+if choice == 4:
+    remove_employee.print_all_records()

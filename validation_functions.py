@@ -1,4 +1,6 @@
+import csv
 import re
+import general_functions
 
 # Functions for user input validation
 def selection_invalid_msg():
@@ -14,9 +16,21 @@ def id_validation(input):
     return True if input.isnumeric() and len(input) == 6 else False
 
 def id_exists(input):
+    fields_list = general_functions.get_fields()
     with open("employee_database.csv") as f:
-        data = f.read()
-        return True if input in data else False
+        reader = csv.reader(f)
+        for row in reader:
+            if input == row[fields_list.index("id")]:
+                return True
+        return False
+
+def get_existing_id(prompt:str):
+    while True:
+        id = input(prompt)
+        if id_exists(id):
+            break
+        print("Invalid input, enter an existing employee ID.")
+    return id
 
 def mobile_validation(input):
     return True if input.isnumeric() and len(input) == 10 and input[0:2] == '04' else False

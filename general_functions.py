@@ -4,9 +4,17 @@ def print_record(id):
     with open("employee_database.csv") as f:
         reader = csv.DictReader(f)
         for row in reader:
-            if row['id'] == id:
+            if row["id"] == id:
                 for field, value in row.items():
                     print("{}: {}".format(field.capitalize(), value))
+
+# def print_modified_record(id):
+#     with open("employee_database.csv") as f:
+#         reader = csv.DictReader(f)
+#         for row in reader:
+#             if row["id"] == id:
+#                 for field, value in row.items():
+#                     print("{}: {}".format(field.capitalize(), value))
 
 def get_fields():
     fields_list = list()

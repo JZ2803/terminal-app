@@ -108,45 +108,51 @@ if choice == 3:
     # While loop to continually prompt until a valid field/value is entered
     while True:
         try:
-            updated_record = input("")
+            updated_record = str(input(""))
             updated_field = updated_record.split(": ")[0].lower()
             updated_field_index = fields_list.index(updated_field)
             updated_value = updated_record.split(": ")[1].capitalize()
         except:
-            print("Invalid input, please try again.")
+            print("Invalid input, enter valid field.")
             continue
 
         if updated_field in fields_list:
-            if updated_field == fields_list[0]:
-                validation_functions.name_validation(updated_value)
-                break
-            if updated_field == fields_list[1]:
-                validation_functions.name_validation(updated_value)
-                break
-            if updated_field == fields_list[2]:
-                validation_functions.id_validation(updated_value)
-                break
-            if updated_field == fields_list[3]:
-                validation_functions.mobile_validation(updated_value)
-                break
-            if updated_field == fields_list[4]:
-                validation_functions.email_validation(updated_value)
-                break
-            if updated_field == fields_list[5]:
-                validation_functions.title_validation(updated_value)
-                break
-            if updated_field == fields_list[6]:
-                validation_functions.remuneration_validation(updated_value)
-                break
-            if updated_field == fields_list[7]:
-                validation_functions.employment_validation(updated_value)
-                break
-
-        validation_functions.field_invalid_msg()
+            match updated_field:
+                case "firstname":
+                    if validation_functions.name_validation(updated_value):
+                        break
+                case "lastname":
+                    if validation_functions.name_validation(updated_value):
+                        break
+                case "id":
+                    if validation_functions.id_validation(updated_value):
+                        break
+                case "mobile":
+                    if validation_functions.mobile_validation(updated_value):
+                        break
+                case "email":
+                    if validation_functions.email_validation(updated_value):
+                        break
+                case "title":
+                    if validation_functions.title_validation(updated_value):
+                        break
+                case "remuneration":
+                    if validation_functions.remuneration_validation(updated_value):
+                        break
+                case "employment":
+                    if validation_functions.employment_validation(updated_value):
+                        break
+            
+        print("Invalid input, enter valid field and value.")
     
+    # Prompt user for confirmation
+    validation_functions.confirmation_validation("Confirm the above change is entered correctly (Y/N): ")
+    print_line()
+
     # Modify employee record in database
     remove_employee.modify_record(id, updated_field_index, updated_value)
-    print("Employee record sucessfully modified in database.")
+    general_functions.print_record(id)
+    print("Employee record sucessfully modified in database, updated record as above.")
 
 # Menu option 4: View all employee records
 if choice == 4:

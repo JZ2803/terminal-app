@@ -1,13 +1,11 @@
 import csv
 import re
-import general_functions
 
-# Functions for user input validation
 def selection_invalid_msg():
-    print("Invalid selection, select from displayed options.")
+    print("Invalid input, select from displayed options.")
 
 def field_invalid_msg():
-    print("Invalid input, please enter valid field.")
+    print("Invalid input, enter valid field.")
 
 def name_validation(input):
     return input.isalpha()
@@ -15,14 +13,14 @@ def name_validation(input):
 def id_validation(input):
     return True if input.isnumeric() and len(input) == 6 else False
 
-def id_exists(input):
-    fields_list = general_functions.get_fields()
+def id_exists(id):
     with open("employee_database.csv") as f:
-        reader = csv.reader(f)
+        reader = csv.DictReader(f)
         for row in reader:
-            if input == row[fields_list.index("id")]:
-                return True
-        return False
+            for key, value in row.items():
+                if key == "id" and value == str(id):
+                    return True
+    return False
 
 def get_existing_id(prompt:str):
     while True:
@@ -67,4 +65,4 @@ def confirmation_validation(prompt:str):
             print("No changes made.")
             exit()
         else:
-            print("Invalid input, please enter Y or N.")
+            print("Invalid input, enter Y or N.")

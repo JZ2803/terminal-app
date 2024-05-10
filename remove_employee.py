@@ -1,5 +1,4 @@
 import csv
-import validation_functions
 
 def remove_record(id):
     lines = list()
@@ -30,4 +29,4 @@ def print_all_records():
     with open("employee_database.csv") as f:
         reader = csv.reader(f)
         for row in reader:
-            print("{:<15} {:15} {:<10} {:<15} {:<30} {:<35} {:<15} {:<15}".format(*row))
+            print("{:<15} {:15} {:<15} {:<15} {:<30} {:<35} {:<15} {:<15}".format(*row))

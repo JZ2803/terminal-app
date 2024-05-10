@@ -157,4 +157,6 @@ if choice == 3:
 
 # Menu option 4: View all employee records
 if choice == 4:
+    print("Displaying all employee records:\n")
     remove_employee.print_all_records()
+    print_line()

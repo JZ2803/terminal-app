@@ -13,11 +13,13 @@ def display_options(options:dict):
         print("{}: {}".format(option, description))
     print_line()
 
-menu_options = {1: "Add new employee record to database",
-                2: "Remove existing employee record from database",
-                3: "Update existing employee record",
-                4: "View all employee records",
-                5: "View a filtered list of employee records based on selection criteria"}
+menu_options = {
+    1: "Add new employee record to database",
+    2: "Remove existing employee record from database",
+    3: "Update existing employee record",
+    4: "View all employee records",
+    5: "Search employee database"
+}
 
 display_options(menu_options)
 
@@ -89,7 +91,7 @@ if choice == 3:
     print_line()
     
     # Prompt user to input field and value to update
-    print("Enter field and new value to to update above employee record. E.g. 'Lastname: Smith'.")
+    print("Enter field and new value to update above employee record, e.g. 'Lastname: Smith'.")
 
     updated_record = str()
     fields_list = database_functions.get_fields()
@@ -149,3 +151,24 @@ if choice == 4:
     print("Displaying all employee records:\n")
     database_functions.print_all_records()
     print_line()
+
+# Menu option 5: Search employee database
+if choice == 5:
+     # Prompt user to input field and value to update
+    print("Enter field and value to search employee database, e.g. 'Employment: Casual'.")
+
+    search_record = str()
+    fields_list = database_functions.get_fields()
+
+    # While loop to continually prompt until a valid field/value is entered
+    while True:
+        try:
+            search_record = str(input(""))
+            search_field = search_record.split(": ")[0].lower()
+            search_field_index = fields_list.index(search_field)
+            search_value = search_record.split(": ")[1].capitalize()
+        except:
+            print("Invalid input, enter valid field.")
+            continue
+
+        ## search and display if any  records match the value searched for

@@ -4,9 +4,6 @@ import re
 def selection_invalid_msg():
     print("Invalid input, select from displayed options.")
 
-# def field_invalid_msg():
-#     print("Invalid input, enter valid field.")
-
 def name_validation(name):
     return name.isalpha()
 

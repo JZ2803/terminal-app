@@ -8,13 +8,15 @@ def print_record(id):
                 for field, value in row.items():
                     print("{}: {}".format(field.capitalize(), value))
 
-# def print_modified_record(id):
-#     with open("employee_database.csv") as f:
-#         reader = csv.DictReader(f)
-#         for row in reader:
-#             if row["id"] == id:
-#                 for field, value in row.items():
-#                     print("{}: {}".format(field.capitalize(), value))
+def print_modified_record(id, updated_field, updated_value):
+    with open("employee_database.csv") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            if row["id"] == id:
+                for field, value in row.items():
+                    if field == updated_field:
+                        value = updated_value
+                    print("{}: {}".format(field.capitalize(), value))
 
 def get_fields():
     fields_list = list()

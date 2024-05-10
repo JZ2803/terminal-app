@@ -17,7 +17,7 @@ def display_options(options:dict):
 
 menu_options = {1: "Add new employee record to database",
                 2: "Remove existing employee record from database",
-                3: "Modify existing employee record",
+                3: "Update existing employee record",
                 4: "View all employee records",
                 5: "View a filtered list of employee records based on selection criteria"}
 
@@ -89,7 +89,7 @@ if choice == 2:
     remove_employee.remove_record(id)
     print("Employee record sucessfully removed from database.")
 
-# Menu option 3: Modify existing employee record
+# Menu option 3: Update existing employee record
 if choice == 3:
     # Prompt user to input ID of employee whose records will be removed
     id = validation_functions.get_existing_id("Enter employee ID of employee whose record will be updated: ")
@@ -146,13 +146,14 @@ if choice == 3:
         print("Invalid input, enter valid field and value.")
     
     # Prompt user for confirmation
-    validation_functions.confirmation_validation("Confirm the above change is entered correctly (Y/N): ")
+    print("")
+    general_functions.print_modified_record(id, updated_field, updated_value)
     print_line()
+    validation_functions.confirmation_validation("Confirm updated employee record above (Y/N): ")
 
-    # Modify employee record in database
-    remove_employee.modify_record(id, updated_field_index, updated_value)
-    general_functions.print_record(id)
-    print("Employee record sucessfully modified in database, updated record as above.")
+    # Update employee record in database
+    remove_employee.update_record(id, updated_field_index, updated_value)
+    print("Employee record sucessfully updated in database.")
 
 # Menu option 4: View all employee records
 if choice == 4:

@@ -14,7 +14,7 @@ def remove_record(id):
         writer = csv.writer(writefile)
         writer.writerows(lines)
 
-def modify_record(id, updated_field_index, updated_value):
+def update_record(id, updated_field_index, updated_value):
     lines = list()
     with open("employee_database.csv", "r") as readfile:
         reader = csv.reader(readfile)

@@ -4,65 +4,61 @@ import re
 def selection_invalid_msg():
     print("Invalid input, select from displayed options.")
 
-def field_invalid_msg():
-    print("Invalid input, enter valid field.")
+# def field_invalid_msg():
+#     print("Invalid input, enter valid field.")
 
-def name_validation(input):
-    return input.isalpha()
+def name_validation(name):
+    return name.isalpha()
 
-def id_validation(input):
-    return True if input.isnumeric() and len(input) == 6 else False
+def identification_validation(identification):
+    return True if identification.isnumeric() and len(identification) == 6 else False
 
-def id_exists(id):
+def identification_exists(identification):
     with open("employee_database.csv") as f:
         reader = csv.DictReader(f)
         for row in reader:
             for key, value in row.items():
-                if key == "id" and value == str(id):
+                if key == "identification" and value == str(identification):
                     return True
     return False
 
-def get_existing_id(prompt:str):
+def get_existing_identification(prompt:str):
     while True:
-        id = input(prompt)
-        if id_exists(id):
+        identification = input(prompt)
+        if identification_exists(identification):
             break
         print("Invalid input, enter an existing employee ID.")
-    return id
+    return identification
 
-def mobile_validation(input):
-    return True if input.isnumeric() and len(input) == 10 and input[0:2] == '04' else False
+def mobile_validation(mobile):
+    return True if mobile.isnumeric() and len(mobile) == 10 and mobile[0:2] == '04' else False
 
-def email_validation(input):
-    return True if re.match(r"[^@]+@[^@]+\.[^@]+", input) else False
+def email_validation(email):
+    return True if re.match(r"[^@]+@[^@]+\.[^@]+", email) else False
 
-def title_validation(input):
+def title_validation(title):
     title_list = list()
     with open("titles.txt") as f:
         for line in f:
             title_list.append(line.strip("\n"))
-    return True if input in title_list else False
+    return True if title in title_list else False
 
-def remuneration_validation(input):
-    return True if input > 0 else False
+def remuneration_validation(remuneration):
+    return True if remuneration > 0 else False
 
-def employment_validation(input):
+def employment_validation(employment):
     employment_list = list()
     with open("employment.txt") as f:
         for line in f:
             employment_list.append(line.strip("\n"))
-    return True if input in employment_list else False
+    return True if employment in employment_list else False
     
-def yn_validation(input):
-    return True if input == 'Y' or 'N' else False
-
 def confirmation_validation(prompt:str):
     while True:
         confirmation = input(prompt)
-        if yn_validation(confirmation):
-            if confirmation == "Y":
-                break
+        if confirmation == "Y":
+            break
+        if confirmation == "N":
             print("No changes made.")
             exit()
-        else:
-            print("Invalid input, enter Y or N.")
+        print("Invalid input, enter Y or N.")

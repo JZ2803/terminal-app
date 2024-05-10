@@ -1,7 +1,5 @@
-import csv
-import add_employee
-import general_functions
-import remove_employee
+import employee
+import database_functions
 import validation_functions
 
 def print_line():
@@ -41,26 +39,17 @@ while choice is None:
 if choice == 1:
     # Prompt user to input employee details
     print(f"You have selected option 1: {menu_options[1]}. Please enter the new employee's:\n")
-    firstname = add_employee.get_firstname()
-    lastname = add_employee.get_lastname()
-    id = add_employee.get_id()
-    mobile = add_employee.get_mobile()
-    email = add_employee.get_email()
-    title = add_employee.get_title()
-    remuneration = add_employee.get_remuneration()
-    employment = add_employee.get_employment()
+    newEmployee = employee.Employee()
+    newEmployee.setFirstname()
+    newEmployee.setLastname()
+    newEmployee.setIdentification()
+    newEmployee.setMobile()
+    newEmployee.setEmail()
+    newEmployee.setTitle()
+    newEmployee.setRemuneration()
+    newEmployee.setEmployment()
 
-    # Create dict with new employee's details
-    new_employee = {
-        "firstname": firstname,
-        "lastname": lastname,
-        "id": id,
-        "mobile": mobile,
-        "email": email,
-        "title": title,
-        "remuneration": remuneration,
-        "employment": employment
-    }
+    new_employee = newEmployee.__dict__
 
     # Prompt user for confirmation
     print_line()
@@ -71,39 +60,39 @@ if choice == 1:
     validation_functions.confirmation_validation("Confirm the above details are correct (Y/N): ")
 
     # Append new employee's record to database
-    add_employee.add_record(new_employee)
+    database_functions.add_record(new_employee)
     print("Employee record sucessfully added to database.")
 
 # Menu option 2: Remove existing employee record from database
 if choice == 2:
     # Prompt user to input ID of employee whose records will be removed
-    id = validation_functions.get_existing_id("Enter employee ID of employee whose record will be removed: ")
+    identification = validation_functions.get_existing_identification("Enter employee ID of employee whose record will be removed: ")
     print("")
 
     # Search database for employee ID, display existing records and prompt user for confirmation
-    general_functions.print_record(id)
+    database_functions.print_record(identification)
     print_line()
     validation_functions.confirmation_validation("Confirm the above employee record to be removed (Y/N): ")
 
     # Remove employee record from database
-    remove_employee.remove_record(id)
+    database_functions.remove_record(identification)
     print("Employee record sucessfully removed from database.")
 
 # Menu option 3: Update existing employee record
 if choice == 3:
     # Prompt user to input ID of employee whose records will be removed
-    id = validation_functions.get_existing_id("Enter employee ID of employee whose record will be updated: ")
+    identification = validation_functions.get_existing_identification("Enter employee ID of employee whose record will be updated: ")
     print("")
 
     # Search database for employee ID, display existing records
-    general_functions.print_record(id)
+    database_functions.print_record(identification)
     print_line()
     
     # Prompt user to input field and value to update
     print("Enter field and new value to to update above employee record. E.g. 'Lastname: Smith'.")
 
     updated_record = str()
-    fields_list = general_functions.get_fields()
+    fields_list = database_functions.get_fields()
 
     # While loop to continually prompt until a valid field/value is entered
     while True:
@@ -124,8 +113,8 @@ if choice == 3:
                 case "lastname":
                     if validation_functions.name_validation(updated_value):
                         break
-                case "id":
-                    if validation_functions.id_validation(updated_value):
+                case "identification":
+                    if validation_functions.identification_validation(updated_value):
                         break
                 case "mobile":
                     if validation_functions.mobile_validation(updated_value):
@@ -147,16 +136,16 @@ if choice == 3:
     
     # Prompt user for confirmation
     print("")
-    general_functions.print_modified_record(id, updated_field, updated_value)
+    database_functions.print_modified_record(identification, updated_field, updated_value)
     print_line()
     validation_functions.confirmation_validation("Confirm updated employee record above (Y/N): ")
 
     # Update employee record in database
-    remove_employee.update_record(id, updated_field_index, updated_value)
+    database_functions.update_record(identification, updated_field_index, updated_value)
     print("Employee record sucessfully updated in database.")
 
 # Menu option 4: View all employee records
 if choice == 4:
     print("Displaying all employee records:\n")
-    remove_employee.print_all_records()
+    database_functions.print_all_records()
     print_line()

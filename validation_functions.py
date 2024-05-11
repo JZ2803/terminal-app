@@ -50,12 +50,12 @@ def employment_validation(employment):
             employment_list.append(line.strip("\n"))
     return True if employment in employment_list else False
     
-def confirmation_validation(prompt:str):
+def confirmation_validation(prompt:str, feedback:str):
     while True:
         confirmation = input(prompt)
-        if confirmation == "Y":
+        if confirmation.upper() == "Y":
             break
-        if confirmation == "N":
-            print("No changes made.")
+        if confirmation.upper() == "N":
+            print(feedback)
             exit()
         print("Invalid input, enter Y or N.")

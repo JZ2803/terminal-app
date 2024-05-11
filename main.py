@@ -1,3 +1,4 @@
+import csv
 import employee
 import database_functions
 import validation_functions
@@ -59,7 +60,7 @@ if choice == 1:
         print("{}: {}".format(field.capitalize(), detail))
     print_line()
 
-    validation_functions.confirmation_validation("Confirm the above details are correct (Y/N): ")
+    validation_functions.confirmation_validation("Confirm the above details are correct (Y/N): ", "No changes made.")
 
     # Append new employee's record to database
     database_functions.add_record(new_employee)
@@ -74,7 +75,7 @@ if choice == 2:
     # Search database for employee ID, display existing records and prompt user for confirmation
     database_functions.print_record(identification)
     print_line()
-    validation_functions.confirmation_validation("Confirm the above employee record to be removed (Y/N): ")
+    validation_functions.confirmation_validation("Confirm the above employee record to be removed (Y/N): ", "No changes made")
 
     # Remove employee record from database
     database_functions.remove_record(identification)
@@ -140,7 +141,7 @@ if choice == 3:
     print("")
     database_functions.print_modified_record(identification, updated_field, updated_value)
     print_line()
-    validation_functions.confirmation_validation("Confirm updated employee record above (Y/N): ")
+    validation_functions.confirmation_validation("Confirm updated employee record above (Y/N): ", "No changes made.")
 
     # Update employee record in database
     database_functions.update_record(identification, updated_field_index, updated_value)
@@ -148,7 +149,7 @@ if choice == 3:
 
 # Menu option 4: View all employee records
 if choice == 4:
-    print("Displaying all employee records:\n")
+    print("\nDisplaying all employee records:\n")
     database_functions.print_all_records()
     print_line()
 
@@ -172,3 +173,20 @@ if choice == 5:
             continue
 
         ## search and display if any  records match the value searched for
+        
+        lines = list()
+        with open("employee_database.csv") as f:
+            reader = csv.reader(f)
+            for row in reader:
+                if row[search_field_index] == search_value:
+                    lines.append(row)
+        if not lines:
+            print("No records found matching input field and value.")
+        else:
+            print(f"\nDisplaying records matching -> {search_field}: {search_value}\n")
+            print("{:<15} {:15} {:<15} {:<15} {:<30} {:<35} {:<15} {:<15}".format(*database_functions.get_fields()))
+            for row in lines:
+                print("{:<15} {:15} {:<15} {:<15} {:<30} {:<35} {:<15} {:<15}".format(*row))
+        print_line()
+
+        validation_functions.confirmation_validation("Would you like to make another search? (Y/N): ", "")

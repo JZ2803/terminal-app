@@ -1,4 +1,6 @@
 import csv
+from rich.console import Console
+from rich.table import Table
 import employee
 import database_functions
 import validation_functions
@@ -6,13 +8,9 @@ import validation_functions
 def print_line():
     print(80 * "-")
 
-# Display menu selection options and prompt user for input until valid option is selected
-def display_options(options:dict):
-    print("\nWelcome to the employee database. Select from the following options:")
-    print_line()
-    for option, description in options.items():
-        print("{}: {}".format(option, description))
-    print_line()
+def populate_menu():
+    for i in range(len(menu_options.keys())):
+        table.add_row(str(i+1), menu_options[i+1])    
 
 menu_options = {
     1: "Add new employee record to database",
@@ -22,10 +20,20 @@ menu_options = {
     5: "Search employee database"
 }
 
-display_options(menu_options)
+# Display menu options in a table
+table = Table(title="\nWelcome to the employee database.\nSelect from the following options:", title_justify="left")
 
+table.add_column("Option", justify="center", style="magenta")
+table.add_column("Description")
+populate_menu()
+
+console = Console()
+console.print(table)
+
+# Prompt user to select menu option
 user_input = None
 choice = None
+
 while choice is None:
     while True:
         try:
@@ -33,7 +41,7 @@ while choice is None:
             break
         except:
             validation_functions.selection_invalid_msg()
-    if user_input in menu_options:
+    if user_input in menu_options.keys():
         choice = user_input
     else:
         validation_functions.selection_invalid_msg()
@@ -41,7 +49,7 @@ while choice is None:
 # Menu option 1: Add new employee record to database
 if choice == 1:
     # Prompt user to input employee details
-    print(f"You have selected option 1: {menu_options[1]}. Please enter the new employee's:\n")
+    print(f"You have selected option 1: {menu_options[1]}.\nEnter the new employee's:\n")
     newEmployee = employee.Employee()
     newEmployee.setFirstname()
     newEmployee.setLastname()
@@ -69,10 +77,10 @@ if choice == 1:
 # Menu option 2: Remove existing employee record from database
 if choice == 2:
     # Prompt user to input ID of employee whose records will be removed
-    identification = validation_functions.get_existing_identification("Enter employee ID of employee whose record will be removed: ")
-    print("")
+    identification = validation_functions.get_existing_identification(f"You have selected option 2: {menu_options[2]}.\n\nEnter employee ID of employee whose record will be removed: ")
 
     # Search database for employee ID, display existing records and prompt user for confirmation
+    print("")
     database_functions.print_record(identification)
     print_line()
     validation_functions.confirmation_validation("Confirm the above employee record to be removed (Y/N): ", "No changes made")
@@ -84,10 +92,10 @@ if choice == 2:
 # Menu option 3: Update existing employee record
 if choice == 3:
     # Prompt user to input ID of employee whose records will be removed
-    identification = validation_functions.get_existing_identification("Enter employee ID of employee whose record will be updated: ")
-    print("")
+    identification = validation_functions.get_existing_identification(f"You have selected option 3: {menu_options[3]}.\n\nEnter employee ID of employee whose record will be updated: ")
 
     # Search database for employee ID, display existing records
+    print("")
     database_functions.print_record(identification)
     print_line()
     
@@ -149,14 +157,14 @@ if choice == 3:
 
 # Menu option 4: View all employee records
 if choice == 4:
-    print("\nDisplaying all employee records:\n")
+    print(f"You have selected option 4: {menu_options[4]}.\n\nDisplaying all employee records:\n")
     database_functions.print_all_records()
     print_line()
 
 # Menu option 5: Search employee database
 if choice == 5:
      # Prompt user to input field and value to update
-    print("Enter field and value to search employee database, e.g. 'Employment: Casual'.")
+    print(f"You have selected option 5: {menu_options[5]}.\n\nEnter field and value to search employee database, e.g. 'Employment: Casual'.")
 
     search_record = str()
     fields_list = database_functions.get_fields()
@@ -172,14 +180,15 @@ if choice == 5:
             print("Invalid input, enter valid field.")
             continue
 
-        ## search and display if any  records match the value searched for
-        
+        # Search database and display matching records
         lines = list()
+
         with open("employee_database.csv") as f:
             reader = csv.reader(f)
             for row in reader:
                 if row[search_field_index] == search_value:
                     lines.append(row)
+
         if not lines:
             print("No records found matching input field and value.")
         else:
@@ -187,6 +196,8 @@ if choice == 5:
             print("{:<15} {:15} {:<15} {:<15} {:<30} {:<35} {:<15} {:<15}".format(*database_functions.get_fields()))
             for row in lines:
                 print("{:<15} {:15} {:<15} {:<15} {:<30} {:<35} {:<15} {:<15}".format(*row))
+
         print_line()
 
+        # Ask user if they wish to make another search
         validation_functions.confirmation_validation("Would you like to make another search? (Y/N): ", "")

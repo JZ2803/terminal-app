@@ -48,8 +48,9 @@ while choice is None:
 
 # Menu option 1: Add new employee record to database
 if choice == 1:
+    print(f"You have selected option 1: {menu_options[1]}.")
     # Prompt user to input employee details
-    print(f"You have selected option 1: {menu_options[1]}.\nEnter the new employee's:\n")
+    print("\nEnter the new employee's:")
     newEmployee = employee.Employee()
     newEmployee.setFirstname()
     newEmployee.setLastname()
@@ -77,8 +78,9 @@ if choice == 1:
 
 # Menu option 2: Remove existing employee record from database
 if choice == 2:
+    print(f"You have selected option 2: {menu_options[2]}.")
     # Prompt user to input ID of employee whose records will be removed
-    identification = validation_functions.get_existing_identification(f"You have selected option 2: {menu_options[2]}.\n\nEnter employee ID of employee whose record will be removed: ")
+    identification = validation_functions.get_existing_identification("\nEnter employee ID of employee whose record will be removed: ")
 
     # Search database for employee ID, display existing records and prompt user for confirmation
     print("")
@@ -92,8 +94,9 @@ if choice == 2:
 
 # Menu option 3: Update existing employee record
 if choice == 3:
+    print(f"You have selected option 3: {menu_options[3]}.")
     # Prompt user to input ID of employee whose records will be removed
-    identification = validation_functions.get_existing_identification(f"You have selected option 3: {menu_options[3]}.\n\nEnter employee ID of employee whose record will be updated: ")
+    identification = validation_functions.get_existing_identification("\nEnter employee ID of employee whose record will be updated: ")
 
     # Search database for employee ID, display existing records
     print("")
@@ -164,8 +167,9 @@ if choice == 4:
 
 # Menu option 5: Search employee database
 if choice == 5:
+    print(f"You have selected option 5: {menu_options[5]}.")
      # Prompt user to input field and value to update
-    print(f"You have selected option 5: {menu_options[5]}.\n\nEnter field and value to search employee database, e.g. 'Employment: Casual'.")
+    print("\nEnter field and value to search employee database, e.g. 'Employment: Casual'.")
 
     search_record = str()
     fields_list = database_functions.get_fields()

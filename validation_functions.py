@@ -10,8 +10,8 @@ def name_validation(name):
 def identification_validation(identification):
     return True if identification.isnumeric() and len(identification) == 6 else False
 
-def identification_exists(identification):
-    with open("employee_database.csv") as f:
+def identification_exists(identification, employee_database="employee_database.csv"):
+    with open(employee_database) as f:
         reader = csv.DictReader(f)
         for row in reader:
             for key, value in row.items():
@@ -33,9 +33,9 @@ def mobile_validation(mobile):
 def email_validation(email):
     return True if re.match(r"[^@]+@[^@]+\.[^@]+", email) else False
 
-def title_validation(title):
+def title_validation(title, titles="titles.txt"):
     title_list = list()
-    with open("titles.txt") as f:
+    with open(titles) as f:
         for line in f:
             title_list.append(line.strip("\n"))
     return True if title in title_list else False
@@ -43,9 +43,9 @@ def title_validation(title):
 def remuneration_validation(remuneration):
     return True if remuneration > 0 else False
 
-def employment_validation(employment):
+def employment_validation(employment, employment_types="employment_types.txt"):
     employment_list = list()
-    with open("employment.txt") as f:
+    with open(employment_types) as f:
         for line in f:
             employment_list.append(line.strip("\n"))
     return True if employment in employment_list else False

@@ -82,7 +82,7 @@ Each of these objectives were added as a card in the Trello board with a due dat
 ### Screenshots: [Trello Board](https://trello.com/invite/b/qkNV1q74/ATTI027e91f49781b7029db504a7823f6e22BCC6E9BF/t1a3-terminal-application)
 
 ![screenshot-trello_board](docs/screenshot_trello_board.png)
-![screenshot-trello_card_planning](docs/screenshot_planning.png)
+![screenshot-trello_card_planning](docs/screenshot_trello_card_planning.png)
 ![screenshot-trello_card_feature_1](docs/screenshot_trello_card_feature_1.png)
 ![screenshot-trello_card_feature_2](docs/screenshot_trello_card_feature_2.png)
 ![screenshot-trello_card_feature_3](docs/screenshot_trello_card_feature_3.png)

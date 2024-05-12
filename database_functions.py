@@ -1,6 +1,5 @@
 import csv
 from colorama import Fore
-import display_functions
 
 def get_fields(employee_database="employee_database.csv"):
     fields_list = list()
@@ -61,4 +60,4 @@ def print_modified_record(identification, updated_field, updated_value, employee
                 for field, value in row.items():
                     if field == updated_field:
                         value = updated_value
-                    print(display_functions.Weight.bold + "{}: {}".format(field.capitalize(), value) + display_functions.Weight.reset)
+                    print("{}: {}".format(field.capitalize(), value))

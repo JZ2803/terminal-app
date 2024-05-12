@@ -1,6 +1,7 @@
 import csv
 import database_functions
 import employee
+from display_functions import Weight
 
 # Create test employee records
 testEmployee1 = employee.Employee("Dwight", "Schrute", "123456", "0400000000", "dwight@email.com", "Sales specialist", "110000", "Full-time")
@@ -67,7 +68,7 @@ class TestTerminalOutput:
         database_functions.add_record(test_employee_3, test_database)
         database_functions.print_all_records(test_database)
         captured = capsys.readouterr()
-        assert captured.out == "firstname       lastname        identification  mobile          email                          title                               remuneration    employment     \nDwight          Schrute         123456          0400000000      dwight@email.com               Chief executive officer             110000          Full-time      \nPam             Beesly          987654          0499999999      pam@email.com                  Administrative assistant            85000           Part-time      \nAngela          Martin          555555          0412345678      angela@email.com               Finance manager                     150000          Full-time      \n"
+        assert captured.out == "firstname       lastname        identification  mobile          email                          title                          remuneration    employment          \nDwight          Schrute         123456          0400000000      dwight@email.com               Chief executive officer        110000          Full-time           \nPam             Beesly          987654          0499999999      pam@email.com                  Administrative assistant       85000           Part-time           \nAngela          Martin          555555          0412345678      angela@email.com               Finance manager                150000          Full-time           \n"
 
     def test_print_modified_record(self, capsys):
         database_functions.print_modified_record("987654", "remuneration", "90000", test_database)

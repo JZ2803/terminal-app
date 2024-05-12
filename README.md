@@ -15,12 +15,12 @@ The application is a HR management system which allows users to add, remove, mod
     * [Feature 3: Update existing employee record](#feature-3-update-existing-employee-record)
     * [Feature 4: View all employee records](#feature-4-view-all-employee-records)
     * [Feature 5: Search employee database](#feature-5-search-employee-database)
-* Installation
-* [Dependencies]
-* [Packages and Modules]
-* [Syste/hardware requirements]
-* [References]
-    e.g. validation limitations
+* [System Requirements](#system-requirements)
+* [Installation](#installation)
+* [Dependencies](#dependencies)
+* [Packages and Modules](#packages-and-modules)
+
+* [References](#references)
 
 ## Style Guide
 
@@ -93,8 +93,61 @@ Each of these objectives were added as a card in the Trello board with a due dat
 ![screenshot-trello_card_planning](docs/screenshot_trello_card_readme.png)
 ![screenshot-trello_card_testing](docs/screenshot_trello_card_testing.png)
 
-## Installation
-Navigate to the directory where the contents of the repo have been saved.
+## System Requirements
 
+Python version 3.7 or above is required to run this application.
+
+To check what version of Python is installed on your system, use the following command:
+
+```
+python --version
+```
+
+To install or update to the latest version of Python, follow this [installation guide](https://wiki.python.org/moin/BeginnersGuide/Download).
+
+## Installation
+
+1. In the directory where the contents of this repo have been saved, navigate to the `src` folder.
+
+2. Run the script by entering the following command:
+
+```python
+./run_employee_database.sh
+```
+
+Note: if an error message that says Python 3 is not installed is displayed, please install or upgrade Python by following the installation guide in the System Requirements section.
+
+3. The script will create and activate a virtual environment and install the required dependencies (listed below).
+
+## Dependencies
+
+* colorama==0.4.6
+* iniconfig==2.0.0
+* markdown-it-py==3.0.0
+* mdurl==0.1.2
+* packaging==24.0
+* pluggy==1.5.0
+* Pygments==2.18.0
+* pytest==8.2.0
+* rich==13.7.1
+
+## Packages and Modules
+* csv
+* colorama
+* rich
+* re
+* pytest
 
 ## References
+
+BeginnersGuide/Download (2022) BeginnersGuide/Download - Python Wiki. Available at: https://wiki.python.org/moin/BeginnersGuide/Download (Accessed: 12 May 2024).
+
+Colorama (2022) PyPI. Available at: https://pypi.org/project/colorama/ (Accessed: 12 May 2024).
+
+CSV - csv file reading and writing (2024) Python documentation. Available at: https://docs.python.org/3/library/csv.html (Accessed: 11 May 2024).
+
+McGugan, W. (2024) Introduction¶, Introduction - Rich 13.6.0 documentation. Available at: https://rich.readthedocs.io/en/stable/introduction.html (Accessed: 12 May 2024).
+
+PEP 8 – style guide for python code (2023) Python Enhancement Proposals (PEPs). Available at: https://peps.python.org/pep-0008/ (Accessed: 8 May 2024).
+
+RE - regular expression operations (2024) Python documentation. Available at: https://docs.python.org/3/library/re.html (Accessed: 12 May 2024). 

@@ -1,5 +1,4 @@
 import csv
-from colorama import Fore
 
 def get_fields(employee_database="employee_database.csv"):
     fields_list = list()

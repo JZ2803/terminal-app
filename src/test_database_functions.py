@@ -1,7 +1,6 @@
 import csv
 import database_functions
 import employee
-from display_functions import Weight
 
 # Create test employee records
 testEmployee1 = employee.Employee("Dwight", "Schrute", "123456", "0400000000", "dwight@email.com", "Sales specialist", "110000", "Full-time")

@@ -82,24 +82,24 @@ Each of these objectives were added as a card in the Trello board with a due dat
 ### Screenshots: [Trello Board](https://trello.com/invite/b/qkNV1q74/ATTI027e91f49781b7029db504a7823f6e22BCC6E9BF/t1a3-terminal-application)
 
 ![screenshot-trello_board](docs/screenshot_trello_board.png)
-![screenshot-trello_card_bash_script](docs/screenshot_trello_card_bash_script.png)
 ![screenshot-trello_card_feature_1](docs/screenshot_trello_card_feature_1.png)
 ![screenshot-trello_card_feature_2](docs/screenshot_trello_card_feature_2.png)
 ![screenshot-trello_card_feature_3](docs/screenshot_trello_card_feature_3.png)
 ![screenshot-trello_card_feature_4](docs/screenshot_trello_card_feature_4.png)
 ![screenshot-trello_card_feature_5](docs/screenshot_trello_card_feature_5.png)
-![screenshot-trello_card_github_repo](docs/screenshot_trello_card_github_repo.png)
-![screenshot-trello_card_packages](docs/screenshot_trello_card_packages.png)
-![screenshot-trello_card_planning](docs/screenshot_trello_card_readme.png)
 ![screenshot-trello_card_testing](docs/screenshot_trello_card_testing.png)
+![screenshot-trello_card_packages](docs/screenshot_trello_card_packages.png)
+![screenshot-trello_card_bash_script](docs/screenshot_trello_card_bash_script.png)
+![screenshot-trello_card_github_repo](docs/screenshot_trello_card_github_repo.png)
+![screenshot-trello_card_planning](docs/screenshot_trello_card_readme.png)
 
 ## System Requirements
 
-Python version 3.7 or above is required to run this application.
+Python version 3.10 or above is required to run this application.
 
 To check what version of Python is installed on your system, use the following command:
 
-```
+```python
 python --version
 ```
 

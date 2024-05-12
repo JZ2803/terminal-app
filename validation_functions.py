@@ -1,3 +1,4 @@
+from colorama import Fore
 import csv
 import re
 
@@ -56,6 +57,6 @@ def confirmation_validation(prompt:str, feedback:str):
         if confirmation == "Y":
             break
         if confirmation == "N":
-            print(feedback)
+            print(Fore.YELLOW + feedback + Fore.RESET)
             exit()
         print("Invalid input, enter Y or N.")

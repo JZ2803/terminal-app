@@ -1,16 +1,11 @@
 import csv
+from colorama import Fore
 from rich.console import Console
 from rich.table import Table
 import employee
+import display_functions
 import database_functions
 import validation_functions
-
-def print_line():
-    print(80 * "-")
-
-def populate_menu():
-    for i in range(len(menu_options.keys())):
-        table.add_row(str(i+1), menu_options[i+1])    
 
 menu_options = {
     1: "Add new employee record to database",
@@ -20,10 +15,14 @@ menu_options = {
     5: "Search employee database"
 }
 
+def populate_menu():
+    for i in range(len(menu_options.keys())):
+        table.add_row(str(i+1), menu_options[i+1])    
+
 # Display menu options in a table
 table = Table(title="\nWelcome to the employee database.\nSelect from the following options:", title_justify="left")
 
-table.add_column("Option", justify="center", style="magenta")
+table.add_column("Option", justify="center")
 table.add_column("Description")
 populate_menu()
 
@@ -64,16 +63,16 @@ if choice == 1:
     new_employee = newEmployee.__dict__
 
     # Prompt user for confirmation
-    print_line()
+    display_functions.print_line()
     for field, detail in new_employee.items():
-        print("{}: {}".format(field.capitalize(), detail))
-    print_line()
+        print(display_functions.Weight.bold + "{}: {}".format(field.capitalize(), detail + display_functions.Weight.reset))
+    display_functions.print_line()
 
     validation_functions.confirmation_validation("Confirm the above details are correct (Y/N): ", "No changes made.")
 
     # Append new employee's record to database
     database_functions.add_record(new_employee)
-    print("Employee record sucessfully added to database.")
+    print(Fore.GREEN + "Employee record sucessfully added to database." + Fore.RESET)
 
 # Menu option 2: Remove existing employee record from database
 if choice == 2:
@@ -84,12 +83,12 @@ if choice == 2:
     # Search database for employee ID, display existing records and prompt user for confirmation
     print("")
     database_functions.print_record(identification)
-    print_line()
+    display_functions.print_line()
     validation_functions.confirmation_validation("Confirm the above employee record to be removed (Y/N): ", "No changes made")
 
     # Remove employee record from database
     database_functions.remove_record(identification)
-    print("Employee record sucessfully removed from database.")
+    print(Fore.GREEN + "Employee record sucessfully removed from database." + Fore.RESET)
 
 # Menu option 3: Update existing employee record
 if choice == 3:
@@ -100,7 +99,7 @@ if choice == 3:
     # Search database for employee ID, display existing records
     print("")
     database_functions.print_record(identification)
-    print_line()
+    display_functions.print_line()
     
     # Prompt user to input field and value to update
     print("Enter field and new value to update above employee record, e.g. 'Lastname: Smith'.")
@@ -151,18 +150,18 @@ if choice == 3:
     # Prompt user for confirmation
     print("")
     database_functions.print_modified_record(identification, updated_field, updated_value)
-    print_line()
+    display_functions.print_line()
     validation_functions.confirmation_validation("Confirm updated employee record above (Y/N): ", "No changes made.")
 
     # Update employee record in database
     database_functions.update_record(identification, updated_field_index, updated_value)
-    print("Employee record sucessfully updated in database.")
+    print(Fore.GREEN + "Employee record sucessfully updated in database." + Fore.RESET)
 
 # Menu option 4: View all employee records
 if choice == 4:
     print(f"You have selected option 4: {menu_options[4]}.\n\nDisplaying all employee records:\n")
     database_functions.print_all_records()
-    print_line()
+    display_functions.print_line()
 
 # Menu option 5: Search employee database
 if choice == 5:
@@ -201,7 +200,7 @@ if choice == 5:
             for row in lines:
                 print("{:<15} {:15} {:<15} {:<15} {:<30} {:<35} {:<15} {:<15}".format(*row))
 
-        print_line()
+        display_functions.print_line()
 
         # Ask user if they wish to make another search
         validation_functions.confirmation_validation("Would you like to make another search? (Y/N): ", "")

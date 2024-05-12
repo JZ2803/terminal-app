@@ -1,5 +1,4 @@
 import csv
-import pytest
 import database_functions
 import employee
 

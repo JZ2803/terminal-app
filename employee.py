@@ -87,7 +87,7 @@ class Employee():
                     break
                 else:
                     print("Invalid employment status, enter a valid employment status from the following:")
-                    with open("employment.txt") as f:
+                    with open("employment_types.txt") as f:
                         data = f.read()
                         print(data.replace("\n", ", "))
         self.employment = employment

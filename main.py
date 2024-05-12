@@ -62,7 +62,6 @@ if choice == 1:
     newEmployee.setEmployment()
 
     new_employee = newEmployee.__dict__
-    print(new_employee)
 
     # Prompt user for confirmation
     print_line()

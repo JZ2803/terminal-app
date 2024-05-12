@@ -135,9 +135,3 @@ class TestEmploymentValidation:
     def test_employment_validation_in_list(self):
         result = validation_functions.employment_validation("Part-time")
         assert result is True
-
-# def test_confirmation_validation_blank(monkeypatch, capsys):
-#     monkeypatch.setattr("builtins.input", lambda _: "N")
-#     validation_functions.confirmation_validation("Some prompt", "Some feedback")
-#     captured = capsys.readouterr()
-#     assert captured.out == "Some feedback\n"

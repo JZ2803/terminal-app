@@ -52,10 +52,10 @@ def employment_validation(employment, employment_types="employment_types.txt"):
     
 def confirmation_validation(prompt:str, feedback:str):
     while True:
-        confirmation = input(prompt)
-        if confirmation.upper() == "Y":
+        confirmation = input(prompt).upper()
+        if confirmation == "Y":
             break
-        if confirmation.upper() == "N":
+        if confirmation == "N":
             print(feedback)
             exit()
         print("Invalid input, enter Y or N.")

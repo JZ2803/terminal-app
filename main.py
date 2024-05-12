@@ -95,7 +95,7 @@ if choice == 2:
 # Menu option 3: Update existing employee record
 if choice == 3:
     print(f"You have selected option 3: {menu_options[3]}.")
-    # Prompt user to input ID of employee whose records will be removed
+    # Prompt user to input ID of employee whose records will be modified
     identification = validation_functions.get_existing_identification("\nEnter employee ID of employee whose record will be updated: ")
 
     # Search database for employee ID, display existing records

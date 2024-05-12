@@ -117,7 +117,7 @@ if choice == 3:
             updated_field_index = fields_list.index(updated_field)
             updated_value = updated_record.split(": ")[1].capitalize()
         except:
-            print("Invalid input, enter valid field.")
+            print("Invalid input, enter valid field and value.")
             continue
 
         if updated_field in fields_list:
@@ -141,8 +141,12 @@ if choice == 3:
                     if validation_functions.title_validation(updated_value):
                         break
                 case "remuneration":
-                    if validation_functions.remuneration_validation(updated_value):
-                        break
+                    try:
+                        if validation_functions.remuneration_validation(int(updated_value)):
+                            break
+                    except:
+                        print("Invalid input, enter a remuneration amount that is a positive integer.")
+                        continue
                 case "employment":
                     if validation_functions.employment_validation(updated_value):
                         break

@@ -47,17 +47,17 @@ Once values have been entered for all fields, the application will display the n
 
 ### Feature 2: Remove existing employee record from database
 
-Allows the user to remove an existing employee from the database. User will be prompted to input the idendification number of the employee whos records will be removed. 
+Allows the user to remove an existing employee from the database. User will be prompted to input the idendification number of the employee whos records will be removed.
 
-Once entered, the employee database will be searched and the employee record matching the input identification will be displayed. 
+Once entered, the employee database will be searched and the employee record matching the input identification will be displayed.
 
 The user will be prompted for confirmation and the employee record will be removed upon confirmation. If there are no matches, user will be prompted to input another identification number.
 
 ### Feature 3: Update existing employee record
 
-Allows the user to update a value in an existing emplyoee record. User will be prompted to input the identification number of the employee whose records will be changed. 
+Allows the user to update a value in an existing emplyoee record. User will be prompted to input the identification number of the employee whose records will be changed.
 
-Existing employee record matching the identification will be displayed on screen and user will then be prompted to input the field and value to be updated. 
+Existing employee record matching the identification will be displayed on screen and user will then be prompted to input the field and value to be updated.
 
 Once valid input has been entered, the modified employee record will be displayed and the user will be prompted for confirmation. Once confirmed, the employee record will be updated in the database.
 
@@ -67,15 +67,15 @@ Displays all records contained in the employee database.
 
 ### Feature 5: Search employee database
 
-Allows the user to search for employee records based on field and value. User will be prompted to enter the field and value they wish to search. 
+Allows the user to search for employee records based on field and value. User will be prompted to enter the field and value they wish to search.
 
 The program will check whether the field entered is valid and then display all employee records from the database which match the input value or if there were no matches found.
 
 ## Implementation Plan
 
-Development and tracking of the implementation was done using Trello. 
+Development and tracking of the implementation was done using Trello.
 
-In the planning phase, I divided the project into the following main objectives: features and functionality scoping, development of features, testing of application code, development of script for application execution, documentation in a README file, and finalisation of the GitHub repository. 
+In the planning phase, I divided the project into the following main objectives: features and functionality scoping, development of features, testing of application code, development of script for application execution, documentation in a README file, and finalisation of the GitHub repository.
 
 Each of these objectives were added as a card in the Trello board with a due date and further divided into smaller tasks in the form of a checklist.
 
@@ -133,6 +133,7 @@ Note: if an error message that says Python 3 is not installed is displayed, plea
 * rich==13.7.1
 
 ## Packages and Modules
+
 * csv
 * colorama
 * rich
@@ -151,4 +152,4 @@ McGugan, W. (2024) Introduction¶, Introduction - Rich 13.6.0 documentation. Ava
 
 PEP 8 – style guide for python code (2023) Python Enhancement Proposals (PEPs). Available at: https://peps.python.org/pep-0008/ (Accessed: 8 May 2024).
 
-RE - regular expression operations (2024) Python documentation. Available at: https://docs.python.org/3/library/re.html (Accessed: 12 May 2024). 
+RE - regular expression operations (2024) Python documentation. Available at: https://docs.python.org/3/library/re.html (Accessed: 12 May 2024).

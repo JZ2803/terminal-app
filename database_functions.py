@@ -51,7 +51,7 @@ def print_all_records(employee_database="employee_database.csv"):
     with open(employee_database) as f:
         reader = csv.reader(f)
         for row in reader:
-            print("{:<15} {:15} {:<15} {:<15} {:<30} {:<35} {:<15} {:<15}".format(*row))
+            print("{:<15} {:15} {:<15} {:<15} {:<30} {:<30} {:<15} {:<15}".format(*row))
 
 def print_modified_record(identification, updated_field, updated_value, employee_database="employee_database.csv"):
     with open(employee_database) as f:

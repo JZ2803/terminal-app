@@ -3,4 +3,4 @@ class Weight:
     reset = "\033[0m"
 
 def print_line():
-    print(80 * "-")
+    print(170 * "-")

@@ -196,9 +196,9 @@ if choice == 5:
             print("No records found matching input field and value.")
         else:
             print(f"\nDisplaying records matching -> {search_field}: {search_value}\n")
-            print("{:<15} {:15} {:<15} {:<15} {:<30} {:<35} {:<15} {:<15}".format(*database_functions.get_fields()))
+            print("{:<15} {:15} {:<15} {:<15} {:<30} {:<30} {:<15} {:<15}".format(*database_functions.get_fields()))
             for row in lines:
-                print("{:<15} {:15} {:<15} {:<15} {:<30} {:<35} {:<15} {:<15}".format(*row))
+                print("{:<15} {:15} {:<15} {:<15} {:<30} {:<30} {:<15} {:<15}".format(*row))
 
         display_functions.print_line()
 
